@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTweetRequest;
 use App\Http\Requests\UpdateTweetRequest;
-use App\Models\Tweet;
+use App\Services\TweetService;
 use Illuminate\View\Factory;
 
 class TweetController extends Controller
@@ -14,9 +14,9 @@ class TweetController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Factory $factory)
+    public function index(Factory $factory, TweetService $tweetService)
     {
-        $tweets = Tweet::all();
+        $tweets = $tweetService->getTweets();
 
         return view('tweet.index')->with('tweets', $tweets);
     }
