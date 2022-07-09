@@ -14,9 +14,8 @@ class TweetController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Factory $factory)
+    public function index(Factory $factory, TweetService $tweetService)
     {
-        $tweetService = new TweetService();
         $tweets = $tweetService->getTweets();
 
         return view('tweet.index')->with('tweets', $tweets);
