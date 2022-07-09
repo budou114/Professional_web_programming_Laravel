@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TweetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/tweet', [TweetController::class, 'index'])->name('tweet');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
